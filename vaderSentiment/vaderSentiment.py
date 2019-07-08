@@ -19,6 +19,7 @@ import json
 from itertools import product
 from inspect import getsourcefile
 from io import open
+import io
 
 # ##Constants##
 
@@ -210,7 +211,7 @@ class SentimentIntensityAnalyzer(object):
     def __init__(self, lexicon_file="vader_lexicon.txt", emoji_lexicon="emoji_utf8_lexicon.txt"):
         _this_module_file_path_ = os.path.abspath(getsourcefile(lambda: 0))
         lexicon_full_filepath = os.path.join(os.path.dirname(_this_module_file_path_), lexicon_file)
-        with open(lexicon_full_filepath, encoding='utf-8') as f:
+        with io.open(lexicon_full_filepath, encoding='utf-8') as f:
             self.lexicon_full_filepath = f.read()
         self.lexicon = self.make_lex_dict()
 
